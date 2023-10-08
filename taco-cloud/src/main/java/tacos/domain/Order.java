@@ -1,5 +1,6 @@
 package tacos.domain;
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -13,7 +14,11 @@ import java.util.List;
 
 
 @Data
+@Entity
+@Table(name="Taco_Order")
 public class Order implements Serializable {
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
     @NotBlank(message="Name is required")
     private String name;
@@ -35,6 +40,12 @@ public class Order implements Serializable {
 
     private Date placedAt;
 
+    @PrePersist
+    void placedAt() {
+        this.placedAt = new Date();
+    }
+
+    @ManyToMany(targetEntity=Taco.class)
     private List<Taco> tacos = new ArrayList<>();
 
     public void addDesign(Taco design) {

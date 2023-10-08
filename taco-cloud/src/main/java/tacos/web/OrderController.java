@@ -17,6 +17,11 @@ import tacos.domain.Order;
 @SessionAttributes("order")
 public class OrderController {
 
+    @ModelAttribute(name = "order")
+    public Order order() {
+        return new Order();
+    }
+
     private OrderRepository orderRepo;
 
     @Autowired
@@ -25,8 +30,7 @@ public class OrderController {
     }
 
     @GetMapping("/current")
-    public String orderForm(Model model) {
-        model.addAttribute("order", new Order());
+    public String orderForm(@ModelAttribute Order order) {
         return "orderForm";
     }
 
