@@ -1,7 +1,27 @@
 spring:
   datasource:
     url: jdbc:h2:mem:tacodb
+  profiles:
+    active:
+      -jdbc
+      -https
 
+taco:
+  orders:
+    pageSize: 20
+---
+spring:
+  config:
+    activate:
+      on-profile: https
+server:
+  port: 8443
+  ssl:
+    key-store: classpath:mykeys.jks
+    key-store-password: password
+    key-password: password
+
+#keytool -keystore mykeys.jks -genkey -alias tomcat -keyalg RSA
 ---
 spring:
   config:
