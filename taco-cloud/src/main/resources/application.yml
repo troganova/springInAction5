@@ -2,9 +2,7 @@ spring:
   datasource:
     url: jdbc:h2:mem:tacodb
   profiles:
-    active:
-      -jdbc
-      -https
+    active: jdbc
 
 taco:
   orders:
