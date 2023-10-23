@@ -2,12 +2,12 @@ package tacos.web.api.resource;
 
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
 import tacos.domain.Taco;
-import tacos.web.api.DesignTacoRestController;
+import tacos.web.api.RecentTacosController;
 
 public class TacoResourceAssembler extends RepresentationModelAssemblerSupport<Taco, TacoResource> {
 
     public TacoResourceAssembler() {
-        super(DesignTacoRestController.class, TacoResource.class);
+        super(RecentTacosController.class, TacoResource.class);
     }
 
     @Override
