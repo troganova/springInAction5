@@ -42,7 +42,8 @@ public class SecurityConfig {
                                 .defaultSuccessUrl("/design", true))
 
                 .logout(form -> form.logoutSuccessUrl("/"))
-                .csrf(csrff -> csrff.ignoringRequestMatchers(new AntPathRequestMatcher("/h2-console/**")));
+//                .csrf(csrff -> csrff.ignoringRequestMatchers(new AntPathRequestMatcher("/h2-console/**")));
+                .csrf(csrff -> csrff.disable());
 
         return http.build();
     }
