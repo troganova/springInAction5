@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>sia</groupId>
+        <artifactId>taco-cloud-parent</artifactId>
+        <version>0.0.8-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>taco-api</artifactId>
+    <name>taco-api</name>
+    <description>taco-api</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>sia</groupId>
+            <artifactId>taco-data</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>sia</groupId>
+            <artifactId>taco-messaging-jms</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>sia</groupId>-->
+<!--            <artifactId>taco-messaging-rabbitmq</artifactId>-->
+<!--            <version>${project.version}</version>-->
+<!--        </dependency>-->
+
+<!--        <dependency>-->
+<!--            <groupId>sia</groupId>-->
+<!--            <artifactId>taco-messaging-kafka</artifactId>-->
+<!--            <version>${project.version}</version>-->
+<!--        </dependency>-->
+
+    </dependencies>
+
+</project>

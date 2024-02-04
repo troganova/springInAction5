@@ -1,0 +1,40 @@
+server:
+  port: 8081
+
+spring:
+  profiles:
+    active: jms-template,jms-listener
+
+---
+spring:
+  config:
+    activate:
+      on-profile: jms-template, jms-listener
+  # The values given here are actually the default values. But they are explicitly
+  # set here as an example of setting the Artemis properties.
+  jms:
+    template:
+      receive-timeout: 2
+  artemis:
+    user: tacoweb
+    password: letm31n
+    embedded:
+      enabled: false
+    broker-url: tcp://localhost:61616
+
+---
+spring:
+  config:
+    activate:
+      on-profile: kafka-listener
+  kafka:
+    bootstrap-servers:
+      - localhost:9092
+    template:
+      default-topic: tacocloud.orders.topic
+    consumer:
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      group-id: tacocloud_kitchen
+      properties:
+        spring.json.trusted.packages: tacos
+

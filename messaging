@@ -1,0 +1,13 @@
+Artemis
+1. Artemis—https://activemq.apache.org/artemis/docs/latest/using-server.html
+   ActiveMQ—http://activemq.apache.org/getting-started.html#GettingStarted-Pre-
+   InstallationRequirements
+2. Скачиваем первое
+3. Распаковываем и запускаем bin/artemis.cmd
+4. Выполняем create mybroker. Настройки:
+    -username: tacoweb
+    -password: letm31n
+    -anonumout: Y
+    если вводятся другие username и password? нужно поментяь в application.yml
+5. В папке bin создается папка mybroker. Ее можно перенести в удобное место. Для запуска сервера необходимо запустить файл mybroker/bin/artemis.cmd и в появившемся окне выполнить run.
+6. Для корректного выполнения тестов необходимо запустить сервер artemis и после этого запускать сборку (тесты).

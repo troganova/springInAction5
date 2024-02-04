@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>sia</groupId>
+		<artifactId>taco-cloud-parent</artifactId>
+		<version>0.0.8-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>taco-messaging-rabbitmq</artifactId>
+	<name>taco-messaging-rabbitmq</name>
+	<description>taco-messaging-rabbitmq</description>
+
+	<dependencies>
+		<!-- TacoCloud dependencies -->
+		<dependency>
+			<groupId>sia</groupId>
+			<artifactId>taco-domain</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<!-- Necessary Boot starters -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-amqp</artifactId>
+		</dependency>
+
+		<!-- Lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Test dependencies -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+</project>
