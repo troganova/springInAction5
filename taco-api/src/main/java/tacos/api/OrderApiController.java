@@ -26,12 +26,15 @@ public class OrderApiController {
 
   private OrderRepository repo;
   private OrderMessagingService orderMessages;
+  private EmailOrderService emailOrderService;
 
   @Autowired
   public OrderApiController(OrderRepository repo, 
-                            OrderMessagingService orderMessages) {
+                            OrderMessagingService orderMessages,
+                            EmailOrderService emailOrderService) {
     this.repo = repo;
     this.orderMessages = orderMessages;
+    this.emailOrderService = emailOrderService;
   }
   
   @GetMapping(produces="application/json")
@@ -42,6 +45,14 @@ public class OrderApiController {
   @PostMapping(consumes="application/json")
   @ResponseStatus(HttpStatus.CREATED)
   public Order postOrder(@RequestBody Order order) {
+    orderMessages.sendOrder(order);
+    return repo.save(order);
+  }
+
+  @PostMapping(path="fromEmail", consumes="application/json")
+  @ResponseStatus(HttpStatus.CREATED)
+  public Order postOrderFromEmail(@RequestBody EmailOrder emailOrder) {
+    Order order = emailOrderService.convertEmailOrderToDomainOrder(emailOrder);
     orderMessages.sendOrder(order);
     return repo.save(order);
   }

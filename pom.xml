@@ -5,7 +5,7 @@
 
     <groupId>sia</groupId>
   	<artifactId>taco-cloud-parent</artifactId>
-  	<version>0.0.8-SNAPSHOT</version>
+  	<version>0.0.9-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <parent>
@@ -21,18 +21,21 @@
     </properties>
 
     <modules>
-      <module>tacos</module>
-      <module>taco-security</module>
-      <module>taco-web</module>
-      <module>taco-api</module>
-      <module>taco-data</module>
-      <module>taco-domain</module>
+        <module>tacos</module>
+        <module>taco-security</module>
+        <module>taco-web</module>
+        <module>taco-api</module>
+        <module>taco-data</module>
+        <module>taco-domain</module>
 
-      <module>taco-messaging-jms</module>
-      <module>taco-messaging-rabbitmq</module>
-      <module>taco-messaging-kafka</module>
+        <module>taco-messaging-jms</module>
+        <module>taco-messaging-rabbitmq</module>
+        <module>taco-messaging-kafka</module>
 
-      <module>taco-kitchen</module>
-      <module>taco-restclient</module>
+        <module>taco-kitchen</module>
+        <module>taco-restclient</module>
+        <module>taco-email</module>
+
+        <module>simple-flow</module>
     </modules>
 </project>

@@ -84,7 +84,7 @@ public class DesignTacoControllerTest {
     	));
 
     when(userRepository.findByUsername("testuser"))
-    		.thenReturn(new User("testuser", "testpass", "Test User", "123 Street", "Someville", "CO", "12345", "123-123-1234"));
+    		.thenReturn(new User("testuser", "testpass", "Test User", "123 Street", "Someville", "CO", "12345", "123-123-1234", "test@test.test"));
   }
 
   @Test

@@ -1,2 +1,6 @@
 /.idea/
 /taco-cloud/.mvn/
+/taco-domain/target/
+/taco-domain/taco-domain.iml
+/taco-restclient/target/
+/taco-restclient/taco-restclient.iml

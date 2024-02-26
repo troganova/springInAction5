@@ -10,6 +10,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
+import tacos.api.EmailOrderService;
 import tacos.data.IngredientRepository;
 import tacos.data.OrderRepository;
 import tacos.data.TacoRepository;
@@ -46,6 +47,9 @@ public class HomeControllerTest {
 
     @MockBean
     private OrderMessagingService orderMessagingService;
+
+    @MockBean
+    private EmailOrderService emailOrderService;
 
     @Test
     public void testHomePage() throws Exception {
