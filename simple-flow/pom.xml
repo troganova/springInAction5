@@ -6,7 +6,6 @@
         <groupId>sia</groupId>
         <artifactId>taco-cloud-parent</artifactId>
         <version>0.0.9-SNAPSHOT</version>
-        <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
     <artifactId>simple-flow</artifactId>
@@ -30,14 +29,5 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

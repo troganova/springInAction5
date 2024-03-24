@@ -37,5 +37,6 @@
         <module>taco-email</module>
 
         <module>simple-flow</module>
+        <module>reactor-fun</module>
     </modules>
 </project>
