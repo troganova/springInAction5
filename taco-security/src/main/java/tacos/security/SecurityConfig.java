@@ -7,9 +7,10 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.ldap.core.support.BaseLdapPathContextSource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.ldap.EmbeddedLdapServerContextSourceFactoryBean;
 import org.springframework.security.config.ldap.LdapPasswordComparisonAuthenticationManagerFactory;
+import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -19,21 +20,17 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.ldap.userdetails.DefaultLdapAuthoritiesPopulator;
 import org.springframework.security.ldap.userdetails.LdapAuthoritiesPopulator;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-import org.springframework.security.provisioning.JdbcUserDetailsManager;
-import org.springframework.security.provisioning.UserDetailsManager;
-import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-
-import javax.sql.DataSource;
+import org.springframework.security.web.server.SecurityWebFilterChain;
 
 @Configuration
+@EnableWebFluxSecurity
 public class SecurityConfig {
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests((authz) -> authz
-                        .requestMatchers(new AntPathRequestMatcher("/design"), new AntPathRequestMatcher("/orders")).hasRole("USER")
-                        .anyRequest().permitAll()
+    public SecurityWebFilterChain filterChain(ServerHttpSecurity http) throws Exception {
+        http.authorizeExchange((authz) -> authz
+                        .pathMatchers("/design", "/orders").hasRole("USER")
+                        .anyExchange().permitAll()
                 )
                 .headers(headerss -> headerss.frameOptions(frameOptionsConfig -> frameOptionsConfig.sameOrigin()))
                 .formLogin(form ->
@@ -41,7 +38,7 @@ public class SecurityConfig {
                                 .loginPage("/login")
                                 .defaultSuccessUrl("/design", true))
 
-                .logout(form -> form.logoutSuccessUrl("/"))
+                .logout(form -> form.logoutUrl("/"))
 //                .csrf(csrff -> csrff.ignoringRequestMatchers(new AntPathRequestMatcher("/h2-console/**")));
                 .csrf(csrff -> csrff.disable());
 

@@ -2,8 +2,10 @@ package tacos.data;
 
 import org.springframework.data.repository.CrudRepository;
 
+import org.springframework.data.repository.reactive.ReactiveCrudRepository;
+import reactor.core.publisher.Mono;
 import tacos.domain.PaymentMethod;
 
-public interface PaymentMethodRepository extends CrudRepository<PaymentMethod, Long> {
-  PaymentMethod findByUserId(Long userId);
+public interface PaymentMethodRepository extends ReactiveCrudRepository<PaymentMethod, String> {
+  Mono<PaymentMethod> findByUserId(String userId);
 }

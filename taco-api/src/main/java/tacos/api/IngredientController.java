@@ -1,24 +1,16 @@
 package tacos.api;
 
-import java.net.URI;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import tacos.domain.Ingredient;
+import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 import tacos.data.IngredientRepository;
+import tacos.domain.Ingredient;
+
+import java.net.URI;
 
 @RestController
 @RequestMapping(path="/ingredients", produces="application/json")
@@ -33,12 +25,12 @@ public class IngredientController {
   }
 
   @GetMapping
-  public Iterable<Ingredient> allIngredients() {
+  public Flux<Ingredient> allIngredients() {
     return repo.findAll();
   }
   
   @GetMapping("/{id}")
-  public Optional<Ingredient> byId(@PathVariable String id) {
+  public Mono<Ingredient> byId(@PathVariable String id) {
     return repo.findById(id);
   }
   
@@ -52,7 +44,7 @@ public class IngredientController {
   
   @PostMapping
   public ResponseEntity<Ingredient> postIngredient(@RequestBody Ingredient ingredient) {
-    Ingredient saved = repo.save(ingredient);
+    Ingredient saved = repo.save(ingredient).block();
     HttpHeaders headers = new HttpHeaders();
     headers.setLocation(URI.create("http://localhost:8080/ingredients/" + ingredient.getId()));
     return new ResponseEntity<>(saved, headers, HttpStatus.CREATED);

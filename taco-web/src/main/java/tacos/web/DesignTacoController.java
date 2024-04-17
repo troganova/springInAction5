@@ -45,7 +45,7 @@ public class DesignTacoController {
     @GetMapping
     public String showDesignForm(Model model) {
         List<Ingredient> ingredients = new ArrayList<>();
-        ingredientRepo.findAll().forEach(i -> ingredients.add(i));
+        ingredientRepo.findAll().toIterable().forEach(i -> ingredients.add(i));
 
         Ingredient.Type[] types = Ingredient.Type.values();
         for (Ingredient.Type type : types) {
@@ -60,7 +60,7 @@ public class DesignTacoController {
     public String processDesign(@Valid @ModelAttribute(value="design") Taco design, Errors errors, @ModelAttribute Order order, Model model) {
         if(errors.hasErrors()) {
             List<Ingredient> ingredients = new ArrayList<>();
-            ingredientRepo.findAll().forEach(i -> ingredients.add(i));
+            ingredientRepo.findAll().toIterable().forEach(i -> ingredients.add(i));
 
             Ingredient.Type[] types = Ingredient.Type.values();
             for (Ingredient.Type type : types) {
@@ -70,7 +70,7 @@ public class DesignTacoController {
             return "design";
         }
         log.info("Processing design: " + design);
-        Taco saved = designRepo.save(design);
+        Taco saved = designRepo.save(design).block();
         order.addDesign(saved);
         return "redirect:/orders/current";
     }

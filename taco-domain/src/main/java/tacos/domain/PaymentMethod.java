@@ -1,21 +1,19 @@
 package tacos.domain;
 
-import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
+@Document
 @Data
 @NoArgsConstructor(force=true)
 @RequiredArgsConstructor
 public class PaymentMethod {
 
   @Id
-  @GeneratedValue(strategy=GenerationType.AUTO)
-  private long id;
-  
-  @ManyToOne
+  private String id;
   private final User user;
   private final String ccNumber;
   private final String ccCVV;

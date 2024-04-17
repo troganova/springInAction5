@@ -1,13 +1,15 @@
 package tacos.data;
-import org.springframework.data.repository.CrudRepository;
+
+import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import reactor.core.publisher.Mono;
 import tacos.domain.User;
 
 @RepositoryRestResource
-public interface UserRepository extends CrudRepository<User, Long> {
+public interface UserRepository extends ReactiveMongoRepository<User, String> {
 
-  User findByUsername(String username);
+  Mono<User> findByUsername(String username);
 
-  User findByEmail(String email);
+  Mono<User> findByEmail(String email);
   
 }

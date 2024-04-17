@@ -10,6 +10,8 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 import tacos.data.IngredientRepository;
 import tacos.data.OrderRepository;
 import tacos.data.TacoRepository;
@@ -66,13 +68,15 @@ public class DesignTacoControllerTest {
       new Ingredient("SLSA", "Salsa", Ingredient.Type.SAUCE),
       new Ingredient("SRCR", "Sour Cream", Ingredient.Type.SAUCE)
     );
+
+    Flux<Ingredient> ingredientFlux = Flux.fromIterable(ingredients);
     
     when(ingredientRepository.findAll())
-        .thenReturn(ingredients);
+        .thenReturn(ingredientFlux);
         
-    when(ingredientRepository.findById("FLTO")).thenReturn(Optional.of(new Ingredient("FLTO", "Flour Tortilla", Ingredient.Type.WRAP)));
-    when(ingredientRepository.findById("GRBF")).thenReturn(Optional.of(new Ingredient("GRBF", "Ground Beef", Ingredient.Type.PROTEIN)));
-    when(ingredientRepository.findById("CHED")).thenReturn(Optional.of(new Ingredient("CHED", "Cheddar", Ingredient.Type.CHEESE)));
+    when(ingredientRepository.findById("FLTO")).thenReturn(Mono.just(new Ingredient("FLTO", "Flour Tortilla", Ingredient.Type.WRAP)));
+    when(ingredientRepository.findById("GRBF")).thenReturn(Mono.just(new Ingredient("GRBF", "Ground Beef", Ingredient.Type.PROTEIN)));
+    when(ingredientRepository.findById("CHED")).thenReturn(Mono.just(new Ingredient("CHED", "Cheddar", Ingredient.Type.CHEESE)));
     
     design = new Taco();
     design.setName("Test Taco");
@@ -84,7 +88,7 @@ public class DesignTacoControllerTest {
     	));
 
     when(userRepository.findByUsername("testuser"))
-    		.thenReturn(new User("testuser", "testpass", "Test User", "123 Street", "Someville", "CO", "12345", "123-123-1234", "test@test.test"));
+    		.thenReturn(Mono.just(new User("testuser", "testpass", "Test User", "123 Street", "Someville", "CO", "12345", "123-123-1234", "test@test.test")));
   }
 
   @Test
@@ -104,7 +108,7 @@ public class DesignTacoControllerTest {
   @WithMockUser(username="testuser", password="testpass", authorities="ROLE_USER")
   public void processDesign() throws Exception {
     when(designRepository.save(design))
-        .thenReturn(design);
+        .thenReturn(Mono.just(design));
     
     mockMvc.perform(post("/design").with(csrf())
         .flashAttr("design", design)

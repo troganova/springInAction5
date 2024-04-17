@@ -39,14 +39,14 @@ public class OrderApiController {
   
   @GetMapping(produces="application/json")
   public Iterable<Order> allOrders() {
-    return repo.findAll();
+    return repo.findAll().toIterable();
   }
   
   @PostMapping(consumes="application/json")
   @ResponseStatus(HttpStatus.CREATED)
   public Order postOrder(@RequestBody Order order) {
     orderMessages.sendOrder(order);
-    return repo.save(order);
+    return repo.save(order).block();
   }
 
   @PostMapping(path="fromEmail", consumes="application/json")
@@ -54,19 +54,19 @@ public class OrderApiController {
   public Order postOrderFromEmail(@RequestBody EmailOrder emailOrder) {
     Order order = emailOrderService.convertEmailOrderToDomainOrder(emailOrder);
     orderMessages.sendOrder(order);
-    return repo.save(order);
+    return repo.save(order).block();
   }
 
   @PutMapping(path="/{orderId}", consumes="application/json")
   public Order putOrder(@RequestBody Order order) {
-    return repo.save(order);
+    return repo.save(order).block();
   }
 
   @PatchMapping(path="/{orderId}", consumes="application/json")
   public Order patchOrder(@PathVariable("orderId") Long orderId,
                           @RequestBody Order patch) {
     
-    Order order = repo.findById(orderId).get();
+    Order order = repo.findById(orderId.toString()).block();
     if (patch.getName() != null) {
       order.setName(patch.getName());
     }
@@ -91,14 +91,14 @@ public class OrderApiController {
     if (patch.getCcCVV() != null) {
       order.setCcCVV(patch.getCcCVV());
     }
-    return repo.save(order);
+    return repo.save(order).block();
   }
   
   @DeleteMapping("/{orderId}")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   public void deleteOrder(@PathVariable("orderId") Long orderId) {
     try {
-      repo.deleteById(orderId);
+      repo.deleteById(orderId.toString());
     } catch (EmptyResultDataAccessException e) {}
   }
 

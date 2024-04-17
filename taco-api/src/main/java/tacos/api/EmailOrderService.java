@@ -28,8 +28,8 @@ public class EmailOrderService {
   }
 
   public Order convertEmailOrderToDomainOrder(EmailOrder emailOrder) {
-    User user = userRepo.findByEmail(emailOrder.getEmail());
-    PaymentMethod paymentMethod = paymentMethodRepo.findByUserId(user.getId());
+    User user = userRepo.findByEmail(emailOrder.getEmail()).block();
+    PaymentMethod paymentMethod = paymentMethodRepo.findByUserId(user.getId()).block();
 
     Order order = new Order();
     order.setUser(user);
@@ -50,7 +50,7 @@ public class EmailOrderService {
       List<String> ingredientIds = emailTaco.getIngredients();
       List<Ingredient> ingredients = new ArrayList<>();
       for (String ingredientId : ingredientIds) {
-        Optional<Ingredient> optionalIngredient = ingredientRepo.findById(ingredientId);
+        Optional<Ingredient> optionalIngredient = ingredientRepo.findById(ingredientId).blockOptional();
         if (optionalIngredient.isPresent()) {
           ingredients.add(optionalIngredient.get());
         }

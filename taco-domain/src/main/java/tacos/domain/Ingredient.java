@@ -1,23 +1,20 @@
 package tacos.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
 @RequiredArgsConstructor
 @AllArgsConstructor
-@Entity
+@Document
 public class Ingredient {
     @Id
     private String id;
     private String name;
 
-    @Enumerated(EnumType.STRING)
     private Type type;
     public static enum Type {
         WRAP, PROTEIN, VEGGIES, CHEESE, SAUCE

@@ -8,6 +8,7 @@ import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import reactor.core.publisher.Flux;
 import tacos.data.TacoRepository;
 import tacos.domain.Taco;
 import tacos.api.resource.TacoResource;
@@ -27,15 +28,7 @@ public class RecentTacosController {
     }
 
     @GetMapping(path="/tacos/recent", produces="application/hal+json")
-    public ResponseEntity<CollectionModel<TacoResource>> recentTacos() {
-        PageRequest page = PageRequest.of(
-                0, 12, Sort.by("createdAt").descending());
-        List<Taco> tacos = tacoRepo.findAll(page).getContent();
-        CollectionModel<TacoResource> tacoResources =
-                new TacoResourceAssembler().toCollectionModel(tacos);
-        tacoResources.add(
-                linkTo(methodOn(RecentTacosController.class).recentTacos())
-                        .withRel("recents"));
-        return new ResponseEntity<>(tacoResources, HttpStatus.OK);
+    public Flux<Taco> recentTacos() {
+        return tacoRepo.findAll().take(12);
     }
 }
