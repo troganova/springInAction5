@@ -6,7 +6,6 @@
         <groupId>sia</groupId>
         <artifactId>taco-cloud-parent</artifactId>
         <version>0.0.9-SNAPSHOT</version>
-        <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
     <artifactId>taco-email</artifactId>
