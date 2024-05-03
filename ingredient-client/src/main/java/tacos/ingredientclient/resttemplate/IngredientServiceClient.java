@@ -2,6 +2,7 @@ package tacos.ingredientclient.resttemplate;
 
 import java.util.Arrays;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,7 @@ public class IngredientServiceClient {
   
   public Iterable<Ingredient> getAllIngredients() {
     Ingredient[] ingredients = rest.getForObject(
-        "http://localhost:51665/ingredients", Ingredient[].class);
+        "http://ingredient-service/ingredients", Ingredient[].class);
     return Arrays.asList(ingredients);
   }
   
