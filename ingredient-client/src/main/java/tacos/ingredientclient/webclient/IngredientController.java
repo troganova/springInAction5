@@ -24,14 +24,14 @@ public class IngredientController {
   @GetMapping
   public String ingredientList(Model model) {
     log.info("Fetched all ingredients from a WebClient-based service.");
-    model.addAttribute("ingredients", client.getAllIngredients());
+    model.addAttribute("ingredients", client.getAllIngredients().toIterable());
     return "ingredientList";
   }
   
   @GetMapping("/{id}")
   public String ingredientDetailPage(@PathVariable("id") String id, Model model) {
     log.info("Fetched an ingredient from a WebClient-based service.");
-    model.addAttribute("ingredient", client.getIngredientById(id));
+    model.addAttribute("ingredient", client.getIngredientById(id).block());
     return "ingredientDetail";
   }
   
