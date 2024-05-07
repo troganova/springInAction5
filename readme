@@ -1,2 +1,9 @@
-@LoadBalanced работает только с реактивными типами данных и для Feign тоже
-В данной версии работает только профиль webclient
+Порядок запуска:
+1. ServiceRegistryApplication
+2. IngredientServiceApplication
+3. IngredientClientApplication
+
+IngredientClientApplication Профили:
+1. Без указания профиля запустится RestTemplate
+2. Feign запустится Feign
+3. Webclient запустится WebFlux
