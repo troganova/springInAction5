@@ -1,0 +1,4 @@
+Порядок запуска:
+1. ServiceRegistryApplication
+2. IngredientServiceApplication
+3. IngredientClientApplication
