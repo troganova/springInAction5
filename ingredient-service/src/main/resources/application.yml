@@ -9,3 +9,9 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
+
+de:
+  flapdoodle:
+    mongodb:
+      embedded:
+        version: 4.4.0
