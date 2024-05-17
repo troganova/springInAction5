@@ -5,7 +5,7 @@
 
     <groupId>sia</groupId>
   	<artifactId>taco-cloud-parent</artifactId>
-  	<version>0.0.13-SNAPSHOT</version>
+  	<version>0.0.14-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <parent>
@@ -24,5 +24,6 @@
         <module>service-registry</module>
         <module>ingredient-service</module>
         <module>ingredient-client</module>
+        <module>config-server</module>
     </modules>
 </project>

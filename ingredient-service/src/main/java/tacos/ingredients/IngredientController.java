@@ -4,6 +4,8 @@ import java.net.URI;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(path="/ingredients", produces="application/json")
 @CrossOrigin(origins="*")
+@RefreshScope
 public class IngredientController {
 
   private IngredientRepository repo;
@@ -28,6 +31,9 @@ public class IngredientController {
   public IngredientController(IngredientRepository repo) {
     this.repo = repo;
   }
+
+  @Value("${greeting.message}")
+  String message;
 
   @GetMapping
   public Iterable<Ingredient> allIngredients() {
@@ -59,5 +65,9 @@ public class IngredientController {
   public void deleteIngredient(@PathVariable String id) {
     repo.deleteById(id);
   }
-  
+
+  @GetMapping("/hello")
+  public String message() {
+    return message;
+  }
 }
