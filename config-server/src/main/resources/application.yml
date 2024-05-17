@@ -10,6 +10,7 @@ spring:
         git:
           uri: http://localhost:3000/gogsuser/tacocloud-config
           order: 1
+          default-label: master
         vault:
           host: localhost
           port: 8200

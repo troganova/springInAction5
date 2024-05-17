@@ -1,26 +1,15 @@
 Порядок запуска:
 1. ServiceRegistryApplication
-2. IngredientServiceApplication
-3. IngredientClientApplication
+2. ConfigServerApplication
+3. IngredientServiceApplication
+4. IngredientClientApplication
 
 IngredientClientApplication Профили:
 1. Без указания профиля запустится RestTemplate
 2. Feign запустится Feign
 3. Webclient запустится WebFlux
 
-download Vault:
-https://www.vaultproject.io/intro/getting-started/install.html
-
-starting vault in dev mode:
-$ vault server -dev -dev-root-token-id=roottoken
-$ export VAULT_ADDR='http://127.0.0.1:8200'
-$ vault status
-
-for production mode:
-https://www.vaultproject.io/docs/index.html
-
 GOGS
-
 install gogs
 1. $ brew update
    $ brew install git
@@ -37,21 +26,23 @@ git commit -m 'comment'
 git push -u origin master (1 раз)
 git push (2 раз и далее)
 
+gogs/custom/conf/app.ini add
+[security]
+LOCAL_NETWORK_ALLOWLIST = *
 
-Artemis (RabbitMQ)
 
-1. Artemis—https://activemq.apache.org/artemis/docs/latest/using-server.html
-   ActiveMQ—http://activemq.apache.org/getting-started.html#GettingStarted-Pre-
-   InstallationRequirements
-2. Скачиваем первое
-3. Распаковываем и запускаем bin/artemis.cmd
-4. Выполняем create mybroker. Настройки:
-    -username: tacoweb
-    -password: letm31n
-    -anonumout: Y
-    если вводятся другие username и password? нужно поментяь в application.yml
-5. В папке bin создается папка mybroker. Ее можно перенести в удобное место. Для запуска сервера необходимо запустить файл mybroker/bin/artemis.cmd и в появившемся окне выполнить run.
-6. Для корректного выполнения тестов необходимо запустить сервер artemis и после этого запускать сборку (тесты).
+Vault:
+https://www.vaultproject.io/intro/getting-started/install.html
+
+starting vault in dev mode:
+$ vault server -dev -dev-root-token-id=roottoken
+$ export VAULT_ADDR='http://127.0.0.1:8200'
+$ vault status
+
+for production mode:
+https://www.vaultproject.io/docs/index.html
+
+
 
 spring:
   data:
@@ -61,15 +52,47 @@ spring:
 
 
 Refresh manual:
-
-@RefreshScope
-
-and application.yml
+1. dependency server-config
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+2. @RefreshScope
+3. application.yml
 management:
   endpoints:
     web:
       exposure:
         include: '*'
-
+4. после push
+curl localhost:53419/actuator/refresh -X POST
 
 Refresh automatic
+1. gogs create webhook
+http://localhost:8888/monitor
+
+2. start rabbitmq
+RabbitMQ
+https://www.rabbitmq.com/docs/install-homebrew
+
+brew update
+brew install rabbitmq
+brew info rabbitmq
+# starts a local RabbitMQ node
+brew services start rabbitmq
+
+# highly recommended: enable all feature flags on the running node
+/opt/homebrew/sbin/rabbitmqctl enable_feature_flag all
+
+brew services stop rabbitmq
+
+3. server config
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-config-monitor</artifactId>
+</dependency>
+4. ingredient-service
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-bus-amqp</artifactId>
+</dependency>
