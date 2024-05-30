@@ -5,7 +5,7 @@
 
     <groupId>sia</groupId>
   	<artifactId>taco-cloud-parent</artifactId>
-  	<version>0.0.14-SNAPSHOT</version>
+  	<version>0.0.16-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <parent>

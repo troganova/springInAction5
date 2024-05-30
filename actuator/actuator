@@ -1,0 +1,132 @@
+{
+	"_links": {
+		"self": {
+			"href": "http://localhost:62008/actuator",
+			"templated": false
+		},
+		"beans": {
+			"href": "http://localhost:62008/actuator/beans",
+			"templated": false
+		},
+		"caches-cache": {
+			"href": "http://localhost:62008/actuator/caches/{cache}",
+			"templated": true
+		},
+		"caches": {
+			"href": "http://localhost:62008/actuator/caches",
+			"templated": false
+		},
+		"health": {
+			"href": "http://localhost:62008/actuator/health",
+			"templated": false
+		},
+		"health-path": {
+			"href": "http://localhost:62008/actuator/health/{*path}",
+			"templated": true
+		},
+		"info": {
+			"href": "http://localhost:62008/actuator/info",
+			"templated": false
+		},
+		"conditions": {
+			"href": "http://localhost:62008/actuator/conditions",
+			"templated": false
+		},
+		"configprops": {
+			"href": "http://localhost:62008/actuator/configprops",
+			"templated": false
+		},
+		"configprops-prefix": {
+			"href": "http://localhost:62008/actuator/configprops/{prefix}",
+			"templated": true
+		},
+		"env": {
+			"href": "http://localhost:62008/actuator/env",
+			"templated": false
+		},
+		"env-toMatch": {
+			"href": "http://localhost:62008/actuator/env/{toMatch}",
+			"templated": true
+		},
+		"integrationgraph": {
+			"href": "http://localhost:62008/actuator/integrationgraph",
+			"templated": false
+		},
+		"loggers": {
+			"href": "http://localhost:62008/actuator/loggers",
+			"templated": false
+		},
+		"loggers-name": {
+			"href": "http://localhost:62008/actuator/loggers/{name}",
+			"templated": true
+		},
+		"heapdump": {
+			"href": "http://localhost:62008/actuator/heapdump",
+			"templated": false
+		},
+		"threaddump": {
+			"href": "http://localhost:62008/actuator/threaddump",
+			"templated": false
+		},
+		"metrics-requiredMetricName": {
+			"href": "http://localhost:62008/actuator/metrics/{requiredMetricName}",
+			"templated": true
+		},
+		"metrics": {
+			"href": "http://localhost:62008/actuator/metrics",
+			"templated": false
+		},
+		"scheduledtasks": {
+			"href": "http://localhost:62008/actuator/scheduledtasks",
+			"templated": false
+		},
+		"mappings": {
+			"href": "http://localhost:62008/actuator/mappings",
+			"templated": false
+		},
+		"refresh": {
+			"href": "http://localhost:62008/actuator/refresh",
+			"templated": false
+		},
+		"busenv-destinations": {
+			"href": "http://localhost:62008/actuator/busenv/{*destinations}",
+			"templated": true
+		},
+		"busenv": {
+			"href": "http://localhost:62008/actuator/busenv",
+			"templated": false
+		},
+		"busrefresh": {
+			"href": "http://localhost:62008/actuator/busrefresh",
+			"templated": false
+		},
+		"busrefresh-destinations": {
+			"href": "http://localhost:62008/actuator/busrefresh/{*destinations}",
+			"templated": true
+		},
+		"features": {
+			"href": "http://localhost:62008/actuator/features",
+			"templated": false
+		},
+		"serviceregistry": {
+			"href": "http://localhost:62008/actuator/serviceregistry",
+			"templated": false
+		},
+		"functions": {
+			"href": "http://localhost:62008/actuator/functions",
+			"templated": false
+		},
+		"bindings-name": {
+			"href": "http://localhost:62008/actuator/bindings/{name}",
+			"templated": true
+		},
+		"bindings": {
+			"href": "http://localhost:62008/actuator/bindings",
+			"templated": false
+		},
+		"channels": {
+			"href": "http://localhost:62008/actuator/channels",
+			"templated": false
+		}
+	}
+}

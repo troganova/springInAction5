@@ -5,11 +5,11 @@
     <parent>
         <groupId>sia</groupId>
         <artifactId>taco-cloud-parent</artifactId>
-        <version>0.0.14-SNAPSHOT</version>
+        <version>0.0.16-SNAPSHOT</version>
     </parent>
 
     <artifactId>ingredient-service</artifactId>
-    <version>0.0.14-SNAPSHOT</version>
+    <version>0.0.16-SNAPSHOT</version>
     <name>ingredient-service</name>
     <description>ingredient-service</description>
 
@@ -81,6 +81,18 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>build-info</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
+                <version>4.9.10</version>
             </plugin>
         </plugins>
     </build>

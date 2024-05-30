@@ -91,8 +91,15 @@ brew services stop rabbitmq
     <groupId>org.springframework.cloud</groupId>
     <artifactId>spring-cloud-config-monitor</artifactId>
 </dependency>
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-bus-amqp</artifactId>
+</dependency>
 4. ingredient-service
 <dependency>
     <groupId>org.springframework.cloud</groupId>
     <artifactId>spring-cloud-starter-bus-amqp</artifactId>
 </dependency>
+
+
+!!!vault, gogs and rabbitmq should be started!!!

@@ -8,6 +8,9 @@ spring:
     name: ingredient-service
 
 management:
+  endpoint:
+    health:
+      show-details: always
   endpoints:
     web:
       exposure:
