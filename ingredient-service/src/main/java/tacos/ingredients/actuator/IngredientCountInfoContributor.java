@@ -1,8 +1,9 @@
-package tacos.ingredients;
+package tacos.ingredients.actuator;
 
 import org.springframework.boot.actuate.info.Info;
 import org.springframework.boot.actuate.info.InfoContributor;
 import org.springframework.stereotype.Component;
+import tacos.ingredients.IngredientRepository;
 
 import java.util.HashMap;
 import java.util.Map;

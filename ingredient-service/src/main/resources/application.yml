@@ -8,6 +8,9 @@ spring:
     name: ingredient-service
 
 management:
+  info:
+    git:
+      mode: full
   endpoint:
     health:
       show-details: always

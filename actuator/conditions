@@ -1,3 +1,4 @@
+$ curl localhost:8081/actuator/conditions
 {
 	"contexts": {
 		"ingredient-service": {

@@ -1,0 +1,18 @@
+$ curl localhost:8081/actuator/metrics/tacocloud
+{
+	"name": "tacocloud",
+	"measurements": [
+		{
+			"statistic": "COUNT",
+			"value": 1.0
+		}
+	],
+	"availableTags": [
+		{
+			"tag": "ingredient",
+			"values": [
+				"FLTO"
+			]
+		}
+	]
+}
