@@ -1,6 +1,7 @@
 Порядок запуска:
 1. ServiceRegistryApplication
 2. ConfigServerApplication
+3. BootAdminServerApplication
 3. IngredientServiceApplication
 4. IngredientClientApplication
 

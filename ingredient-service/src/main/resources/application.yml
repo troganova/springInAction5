@@ -6,6 +6,14 @@ spring:
     import: configserver:http://localhost:8888
   application:
     name: ingredient-service
+#  boot:
+#    admin:
+#      client:
+#        url: http://localhost:9090
+#        instance:
+#          metadata:
+#            user.name: ${spring.security.user.name}
+#            user.password: ${spring.security.user.password}
 
 management:
   info:

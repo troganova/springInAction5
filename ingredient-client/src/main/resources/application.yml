@@ -1,3 +1,13 @@
 spring:
   application:
     name: ingredient-client
+
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'
