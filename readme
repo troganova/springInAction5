@@ -1,3 +1,13 @@
+jconsole
+/Users/tanya/Library/Java/JavaVirtualMachines/corretto-19.0.2/Contents/Home/bin
+
+!!!!!!!
+IngredientRepository findAll() returns data with links and client doesn't work.
+You need IngredientController
+But with IngredientController doesn't work onAfterCreate after save through save method in controller only through repository directly
+!!!!!!!
+
+
 Порядок запуска:
 1. ServiceRegistryApplication
 2. ConfigServerApplication

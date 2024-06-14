@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Calendar;
 
-//@Component
+@Component
 public class IngredientHealthIndicator implements HealthIndicator {
     @Override
     public Health health() {
