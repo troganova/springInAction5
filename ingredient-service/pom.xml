@@ -5,13 +5,14 @@
     <parent>
         <groupId>sia</groupId>
         <artifactId>taco-cloud-parent</artifactId>
-        <version>0.0.18-SNAPSHOT</version>
+        <version>0.0.19-SNAPSHOT</version>
     </parent>
 
     <artifactId>ingredient-service</artifactId>
-    <version>0.0.18-SNAPSHOT</version>
+    <version>0.0.19-SNAPSHOT</version>
     <name>ingredient-service</name>
     <description>ingredient-service</description>
+    <packaging>war</packaging>
 
     <dependencies>
         <dependency>

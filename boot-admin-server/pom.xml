@@ -5,11 +5,11 @@
 	<parent>
 		<groupId>sia</groupId>
 		<artifactId>taco-cloud-parent</artifactId>
-		<version>0.0.18-SNAPSHOT</version>
+		<version>0.0.19-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>boot-admin-server</artifactId>
-	<version>0.0.18-SNAPSHOT</version>
+	<version>0.0.19-SNAPSHOT</version>
 	<name>boot-admin-server</name>
 	<description>boot-admin-server</description>
 
