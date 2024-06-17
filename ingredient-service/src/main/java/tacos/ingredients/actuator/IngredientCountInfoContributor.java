@@ -2,12 +2,14 @@ package tacos.ingredients.actuator;
 
 import org.springframework.boot.actuate.info.Info;
 import org.springframework.boot.actuate.info.InfoContributor;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import tacos.ingredients.IngredientRepository;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@Profile("actuator")
 @Component
 public class IngredientCountInfoContributor implements InfoContributor {
 

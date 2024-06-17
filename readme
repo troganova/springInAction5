@@ -1,17 +1,6 @@
-jconsole
-/Users/tanya/Library/Java/JavaVirtualMachines/corretto-19.0.2/Contents/Home/bin
-
-!!!!!!!
-IngredientRepository findAll() returns data with links and client doesn't work.
-You need IngredientController
-But with IngredientController doesn't work onAfterCreate after save through save method in controller only through repository directly
-!!!!!!!
-
-
 Порядок запуска:
 1. ServiceRegistryApplication
-2. ConfigServerApplication
-3. BootAdminServerApplication
+2. BootAdminServerApplication
 3. IngredientServiceApplication
 4. IngredientClientApplication
 
@@ -20,97 +9,40 @@ IngredientClientApplication Профили:
 2. Feign запустится Feign
 3. Webclient запустится WebFlux
 
-GOGS
-install gogs
-1. $ brew update
-   $ brew install git
-2. https://gogs.io/docs/installation/install_from_binary
-- Extract the archive (gogs/gogs_0.13.0_darwin_amd64.zip)
-- cd into the directory that was just created.
-- Execute ./gogs web.
-- Gogs will start up a HTTP service at port 3000 as default. Browse /install for initial configuration (e.g. http://localhost:3000/install).
-gogsuser/12345
 
-commit to gogs
-git add *
-git commit -m 'comment'
-git push -u origin master (1 раз)
-git push (2 раз и далее)
+create docker
+1. ./mvnw package dockerfile:build
+with plugin in pom.xml
+<plugin>
+    <groupId>com.spotify</groupId>
+    <artifactId>dockerfile-maven-plugin</artifactId>
+    <version>1.4.13</version>
+    <configuration>
+        <repository>${docker.image.prefix}/${project.artifactId}</repository>
+        <buildArgs>
+            <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+        </buildArgs>
+    </configuration>
+</plugin>
 
-gogs/custom/conf/app.ini add
-[security]
-LOCAL_NETWORK_ALLOWLIST = *
+2. ./mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=tacocloud/boot-admin-server:0.0.19-SNAPSHOT
+works only with jdk 17
 
+3. docker build tacocloud -t habuma/tacocloud:0.0.19-SNAPSHOT
+docker build . -t tacocloud/ingredient-service:0.0.19-SNAPSHOT
+docker build . -t tacocloud/ingredient-client:0.0.19-SNAPSHOT
+docker build . -t tacocloud/boot-admin-service:0.0.19-SNAPSHOT
+docker build . -t tacocloud/service-registry:0.0.19-SNAPSHOT
 
-Vault:
-https://www.vaultproject.io/intro/getting-started/install.html
-
-starting vault in dev mode:
-$ vault server -dev -dev-root-token-id=roottoken
-$ export VAULT_ADDR='http://127.0.0.1:8200'
-$ vault status
-
-for production mode:
-https://www.vaultproject.io/docs/index.html
+docker run -d -p 8761:8761 --name service-registry tacocloud/service-registry:0.0.19-SNAPSHOT
+docker run -d -p 9090:9090 --name boot-admin --link service-registry:eureka tacocloud/boot-admin-server:0.0.19-SNAPSHOT
+docker run -d -p 8888:8888 --name ingredient-service --link service-registry:eureka --link boot-admin:boot-admin  tacocloud/ingredient-service:0.0.19-SNAPSHOT
+docker run -d -p 8080:8080 --name ingredient-client --link service-registry:eureka --link boot-admin:boot-admin --link ingredient-service:ingredient-service  tacocloud/ingredient-client:0.0.19-SNAPSHOT
 
 
 
-spring:
-  data:
-    mongodb:
-      password: '{cipher}4156331a3f5274e807080e8d9412dc1f8901cc5c402d7f2b0cbfa91b2445be6b'
 
 
 
-Refresh manual:
-1. dependency server-config
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-actuator</artifactId>
-</dependency>
-2. @RefreshScope
-3. application.yml
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
-4. после push
-curl localhost:53419/actuator/refresh -X POST
-
-Refresh automatic
-1. gogs create webhook
-http://localhost:8888/monitor
-
-2. start rabbitmq
-RabbitMQ
-https://www.rabbitmq.com/docs/install-homebrew
-
-brew update
-brew install rabbitmq
-brew info rabbitmq
-# starts a local RabbitMQ node
-brew services start rabbitmq
-
-# highly recommended: enable all feature flags on the running node
-/opt/homebrew/sbin/rabbitmqctl enable_feature_flag all
-
-brew services stop rabbitmq
-
-3. server config
-<dependency>
-    <groupId>org.springframework.cloud</groupId>
-    <artifactId>spring-cloud-config-monitor</artifactId>
-</dependency>
-<dependency>
-    <groupId>org.springframework.cloud</groupId>
-    <artifactId>spring-cloud-starter-bus-amqp</artifactId>
-</dependency>
-4. ingredient-service
-<dependency>
-    <groupId>org.springframework.cloud</groupId>
-    <artifactId>spring-cloud-starter-bus-amqp</artifactId>
-</dependency>
 
 
-!!!vault, gogs and rabbitmq should be started!!!

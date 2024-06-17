@@ -2,6 +2,7 @@ package tacos.ingredients.actuator;
 
 import io.micrometer.core.instrument.MeterRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.rest.core.event.AbstractRepositoryEventListener;
 import org.springframework.jmx.export.annotation.ManagedAttribute;
 import org.springframework.jmx.export.annotation.ManagedOperation;
@@ -15,6 +16,7 @@ import tacos.ingredients.IngredientRepository;
 import javax.management.Notification;
 import java.util.concurrent.atomic.AtomicLong;
 
+@Profile("actuator")
 @Service
 @ManagedResource
 public class IngredientMetrics extends AbstractRepositoryEventListener<Ingredient> implements NotificationPublisherAware {

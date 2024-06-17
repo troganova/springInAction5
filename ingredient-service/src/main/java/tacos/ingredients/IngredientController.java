@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(path="/ingredients", produces="application/json")
 @CrossOrigin(origins="*")
-@RefreshScope
 public class IngredientController {
 
   private IngredientRepository repo;
@@ -32,7 +31,7 @@ public class IngredientController {
     this.repo = repo;
   }
 
-  @Value("${greeting.message}")
+  @Value("${greeting.message:}")
   String message;
 
   @GetMapping

@@ -2,10 +2,12 @@ package tacos.ingredients.actuator;
 
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.util.Calendar;
 
+@Profile("actuator")
 @Component
 public class IngredientHealthIndicator implements HealthIndicator {
     @Override

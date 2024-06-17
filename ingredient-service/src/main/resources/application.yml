@@ -1,19 +1,9 @@
 spring:
-  cloud:
-    config:
-      token: roottoken
-  config:
-    import: configserver:http://localhost:8888
   application:
     name: ingredient-service
-#  boot:
-#    admin:
-#      client:
-#        url: http://localhost:9090
-#        instance:
-#          metadata:
-#            user.name: ${spring.security.user.name}
-#            user.password: ${spring.security.user.password}
+
+server:
+  port: 8888
 
 management:
   info:
@@ -26,3 +16,36 @@ management:
     web:
       exposure:
         include: '*'
+
+---
+spring:
+  config:
+    activate:
+      on-profile: docker
+  boot:
+    admin:
+      client:
+        url: http://boot-admin:9090
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka:8761/eureka/
+---
+spring:
+  cloud:
+    config:
+      token: roottoken
+  config:
+    import: configserver:http://localhost:8888
+    activate:
+      on-profile: config-server
+#  boot:
+#    admin:
+#      client:
+#        url: http://localhost:9090
+#        instance:
+#          metadata:
+#            user.name: ${spring.security.user.name}
+#            user.password: ${spring.security.user.password}
+

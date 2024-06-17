@@ -11,3 +11,18 @@ management:
     web:
       exposure:
         include: '*'
+
+---
+spring:
+  config:
+    activate:
+      on-profile: docker
+  boot:
+    admin:
+      client:
+        url: http://boot-admin:9090
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka:8761/eureka/

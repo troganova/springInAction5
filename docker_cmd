@@ -1,0 +1,13 @@
+docker images
+
+delete all instances
+docker rm -vf $(docker ps -aq)
+
+delete all images
+docker rmi -f $(docker images -aq)
+
+docker run -p 8080:8081 \
+             --link tacocloud-mongo:mongo \
+             tacocloud/ingredient-service
+
+
