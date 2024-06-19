@@ -5,11 +5,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import tacos.domain.Ingredient;
+import tacos.domain.Order;
 import tacos.domain.Taco;
 
 import java.util.Arrays;
@@ -19,10 +17,11 @@ import java.util.stream.Collectors;
 @Slf4j
 @Controller
 @RequestMapping("/design")
+@SessionAttributes("order")
 public class DesignTacoController {
 
-    @GetMapping
-    public String showDesignForm(Model model) {
+    @ModelAttribute
+    public void addIngredientsToModel(Model model) {
         List<Ingredient> ingredients = Arrays.asList(
                 new Ingredient("FLTO", "Flour Tortilla", Ingredient.Type.WRAP),
                 new Ingredient("COTO", "Corn Tortilla", Ingredient.Type.WRAP),
@@ -35,21 +34,34 @@ public class DesignTacoController {
                 new Ingredient("SLSA", "Salsa", Ingredient.Type.SAUCE),
                 new Ingredient("SRCR", "Sour Cream", Ingredient.Type.SAUCE)
         );
-        Ingredient.Type[] types = Ingredient.Type.values();
-        for (Ingredient.Type type : types) {
+        Ingredient.Type[] types = Ingredient.Type.values(); for (Ingredient.Type type : types) {
             model.addAttribute(type.toString().toLowerCase(),
-                    filterByType(ingredients, type));
-        }
-        model.addAttribute("design", new Taco());
+                    filterByType(ingredients, type)); }
+    }
+
+    @ModelAttribute(name = "order")
+    public Order order() {
+        return new Order();
+    }
+
+    @ModelAttribute(name = "taco")
+    public Taco taco() {
+        return new Taco();
+    }
+
+
+    @GetMapping
+    public String showDesignForm() {
         return "design";
     }
 
     @PostMapping
-    public String processDesign(@Valid  @ModelAttribute(value="design") Taco design, Errors errors) {
+    public String processTaco(@Valid Taco taco, Errors errors, @ModelAttribute Order order) {
         if(errors.hasErrors()) {
             return "design";
         }
-        log.info("Processing design: " + design);
+        order.addTaco(taco);
+        log.info("Processing taco: " + taco);
         return "redirect:/orders/current";
     }
 
