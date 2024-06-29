@@ -3,6 +3,7 @@ package tacos.domain;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import org.springframework.data.annotation.Id;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,6 +12,7 @@ import java.util.List;
 @Data
 public class Taco {
 
+  @Id
   private Long id;
 
   @NotNull
@@ -18,8 +20,12 @@ public class Taco {
   private String name;
 
   @Size(min=1, message="You must choose at least 1 ingredient")
-  private List<String> ingredients = new ArrayList<>();
+  private List<IngredientRef> ingredients = new ArrayList<>();
 
-  private Date createdAt;
+  private Date createdAt = new Date();
+
+  public void addIngredient(Ingredient taco) {
+    ingredients.add(new IngredientRef(taco.getId()));
+  }
 
 }
