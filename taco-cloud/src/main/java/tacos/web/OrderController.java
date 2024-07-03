@@ -4,7 +4,6 @@ import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
@@ -17,25 +16,19 @@ import tacos.domain.Order;
 @SessionAttributes("order")
 public class OrderController {
 
-    @ModelAttribute(name = "order")
-    public Order order() {
-        return new Order();
-    }
-
     private OrderRepository orderRepo;
 
-    @Autowired
     public OrderController(OrderRepository orderRepo) {
         this.orderRepo = orderRepo;
     }
 
     @GetMapping("/current")
-    public String orderForm(@ModelAttribute Order order) {
+    public String orderForm() {
         return "orderForm";
     }
 
     @PostMapping
-    public String processOrder(@Valid @ModelAttribute Order order, Errors errors, SessionStatus sessionStatus) {
+    public String processOrder(@Valid Order order, Errors errors, SessionStatus sessionStatus) {
         if (errors.hasErrors()) {
             return "orderForm";
         }

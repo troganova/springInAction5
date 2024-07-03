@@ -30,7 +30,7 @@ public class Order implements Serializable {
     private String state;
     @NotBlank(message="Zip code is required")
     private String zip;
-    @CreditCardNumber(message="Not a valid credit card number")
+    @CreditCardNumber(message="Not a valid credit card number") //example: 378282246310005
     private String ccNumber;
     @Pattern(regexp="^(0[1-9]|1[0-2])([\\/])([1-9][0-9])$",
             message="Must be formatted MM/YY")
@@ -48,8 +48,8 @@ public class Order implements Serializable {
     @ManyToMany(targetEntity=Taco.class)
     private List<Taco> tacos = new ArrayList<>();
 
-    public void addDesign(Taco design) {
-        this.tacos.add(design);
+    public void addTaco(Taco taco) {
+        this.tacos.add(taco);
     }
 
 }
