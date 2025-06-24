@@ -1,0 +1,12 @@
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    check-template-location: true
+    cache: false
+  cassandra:
+    keyspace-name: tacocloud
+    schema-action: recreate
+    local-datacenter: datacenter1
+    username: tacocloud
+    password: 123
