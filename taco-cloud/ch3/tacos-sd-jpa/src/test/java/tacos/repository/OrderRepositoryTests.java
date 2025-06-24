@@ -2,7 +2,7 @@ package tacos.repository;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import tacos.entity.Ingredient;
 import tacos.entity.Ingredient.Type;
 import tacos.entity.Taco;
@@ -12,7 +12,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest
+@DataJpaTest
 public class OrderRepositoryTests {
 
   @Autowired

@@ -15,6 +15,7 @@
         <module>ch2</module>
         <module>ch3/tacos-jdbctemplate</module>
         <module>ch3/tacos-sd-jdbc</module>
+        <module>ch3/tacos-sd-jpa</module>
     </modules>
 
 </project>

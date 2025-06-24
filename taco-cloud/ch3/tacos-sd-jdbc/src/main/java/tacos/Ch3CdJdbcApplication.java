@@ -4,7 +4,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.transaction.annotation.Transactional;
 import tacos.entity.Ingredient;
 import tacos.entity.Ingredient.Type;
 import tacos.repository.IngredientRepository;
@@ -12,14 +11,13 @@ import tacos.repository.IngredientRepository;
 import java.util.List;
 
 @SpringBootApplication
-public class Ch3JdbcApplication {
+public class Ch3CdJdbcApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Ch3JdbcApplication.class, args);
+        SpringApplication.run(Ch3CdJdbcApplication.class, args);
     }
 
     @Bean
-    @Transactional
     public CommandLineRunner dataLoader(IngredientRepository repo) {
         return args -> {
             repo.deleteAll();
