@@ -18,6 +18,7 @@
         <module>ch3/tacos-sd-jpa</module>
         <module>ch4/tacos-sd-cassandra</module>
         <module>ch4/tacos-sd-mongodb</module>
+        <module>ch5/tacos-spring-security</module>
     </modules>
 
 </project>
