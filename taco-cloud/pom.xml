@@ -19,6 +19,7 @@
         <module>ch4/tacos-sd-cassandra</module>
         <module>ch4/tacos-sd-mongodb</module>
         <module>ch5/tacos-spring-security</module>
+        <module>ch6</module>
     </modules>
 
 </project>

@@ -11,10 +11,10 @@ import tacos.repository.IngredientRepository;
 import java.util.List;
 
 @SpringBootApplication
-public class Ch3CdJdbcApplication {
+public class Ch3SdJdbcApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Ch3CdJdbcApplication.class, args);
+        SpringApplication.run(Ch3SdJdbcApplication.class, args);
     }
 
     @Bean

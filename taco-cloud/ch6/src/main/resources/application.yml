@@ -1,0 +1,39 @@
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    check-template-location: true
+    cache: false
+  datasource:
+    generate-unique-name: false
+    name: tacocloud
+    url: jdbc:h2:mem:tacocloud
+    driver-class-name: org.h2.Driver
+
+greeting:
+  welcome: You are using ${spring.application.name}
+
+
+
+#  sql:
+#    init:
+#      data-locations: data.sql
+#      schema-locations: schema.sql
+
+#logging:
+#  level:
+#    root: warn
+#    org.springframework.security: debug
+
+# keytool -keystore mykeys.jks -genkey -alias tomcat -keyalg RSA
+#management:
+#  server:
+#    ssl:
+#      key-store: file:///path/to/mykeys.jks
+#      key-store-password: pass
+#      key-password: pass
+#server:
+#  port: 8443
+taco:
+  orders:
+    page-size: 2
