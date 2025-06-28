@@ -1,0 +1,8 @@
+spring:
+  data:
+    rest:
+      base-path: /data-api
+      detection-strategy: annotated
+  datasource:
+    generate-unique-name: false
+    name: tacocloud

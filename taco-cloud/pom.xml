@@ -13,13 +13,11 @@
     <modules>
         <module>ch1</module>
         <module>ch2</module>
-        <module>ch3/tacos-jdbctemplate</module>
-        <module>ch3/tacos-sd-jdbc</module>
-        <module>ch3/tacos-sd-jpa</module>
-        <module>ch4/tacos-sd-cassandra</module>
-        <module>ch4/tacos-sd-mongodb</module>
-        <module>ch5/tacos-spring-security</module>
+        <module>ch3</module>
+        <module>ch4</module>
+        <module>ch5</module>
         <module>ch6</module>
+        <module>ch7</module>
     </modules>
 
 </project>
