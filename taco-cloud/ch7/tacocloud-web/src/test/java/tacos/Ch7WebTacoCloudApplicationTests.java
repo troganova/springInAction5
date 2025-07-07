@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Ch7TacoCloudApplicationTests {
+class Ch7WebTacoCloudApplicationTests {
 
     @Test
     void contextLoads() {

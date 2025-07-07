@@ -6,7 +6,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.web.servlet.error.ErrorViewResolver;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,10 +15,10 @@ import java.util.Collections;
 import java.util.Map;
 
 @SpringBootApplication
-public class TacocloudApplication {
+public class Ch7ApiTacocloudApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TacocloudApplication.class, args);
+		SpringApplication.run(Ch7ApiTacocloudApplication.class, args);
 	}
 
 	// To avoid 404s when using Angular HTML 5 routing

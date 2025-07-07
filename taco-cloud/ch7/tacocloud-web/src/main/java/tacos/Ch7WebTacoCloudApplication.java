@@ -8,10 +8,10 @@ import org.springframework.context.annotation.Bean;
 import java.util.List;
 
 @SpringBootApplication
-public class Ch7TacoCloudApplication {
+public class Ch7WebTacoCloudApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Ch7TacoCloudApplication.class, args);
+        SpringApplication.run(Ch7WebTacoCloudApplication.class, args);
     }
 
     @Bean
