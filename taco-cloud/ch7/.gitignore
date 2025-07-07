@@ -34,3 +34,5 @@ build/
 /tacocloud-ui/node/node_modules/
 /tacocloud-ui/node/
 /tacocloud-ui/package-lock.json
+/tacocloud-ui/dist/
+/tacocloud-ui/node_modules/

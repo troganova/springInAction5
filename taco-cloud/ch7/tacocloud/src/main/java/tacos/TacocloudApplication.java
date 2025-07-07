@@ -16,7 +16,6 @@ import java.util.Collections;
 import java.util.Map;
 
 @SpringBootApplication
-@ComponentScan
 public class TacocloudApplication {
 
 	public static void main(String[] args) {
