@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>sia</groupId>
+        <artifactId>ch8</artifactId>
+        <version>0.0.8-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>tacocloud8</artifactId>
+    <packaging>pom</packaging>
+
+    <properties>
+        <java.version>21</java.version>
+        <tacocloud.version>${project.version}</tacocloud.version>
+    </properties>
+
+    <modules>
+        <module>ch8-tacocloud-domain</module>
+        <module>ch8-tacocloud-data</module>
+        <module>ch8-tacocloud-security</module>
+        <module>ch8-tacocloud-api</module>
+        <module>ch8-tacocloud-ui</module>
+        <module>ch8-tacocloud-restclient</module>
+        <module>ch8-tacocloud</module>
+    </modules>
+
+</project>

@@ -1,1 +1,4 @@
 /.idea/
+/node-modules/
+/target/
+/dist/
