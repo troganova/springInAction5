@@ -13,7 +13,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
-import org.springframework.security.oauth2.core.oidc.OidcScopes;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.server.authorization.client.InMemoryRegisteredClientRepository;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
@@ -64,11 +63,12 @@ public class AuthorizationServerConfig {
   }
 
   @Bean
-  public RegisteredClientRepository registeredClientRepository() {
+  public RegisteredClientRepository registeredClientRepository(PasswordEncoder passwordEncoder) {
     return new InMemoryRegisteredClientRepository(
             RegisteredClient.withId(UUID.randomUUID().toString())
                     .clientId("taco-admin-client")
-                    .clientSecret("{noop}secret")
+                    .clientSecret(passwordEncoder.encode("secret"))
+                    .scope("openid")
                     .scope("writeIngredients")
                     .scope("deleteIngredients")
                     .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())

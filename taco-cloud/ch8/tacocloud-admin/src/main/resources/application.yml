@@ -1,5 +1,9 @@
 server:
   port: 9090
+  servlet:
+    session:
+      cookie:
+        name: CLIENT_SESSION
 
 spring:
   thymeleaf:
@@ -19,23 +23,8 @@ spring:
             client-secret: secret
             authorization-grant-type: authorization_code
             redirect-uri: "http://127.0.0.1:9090/login/oauth2/code/{registrationId}"
-            scope: writeIngredients,deleteIngredients
+            scope: openid,writeIngredients,deleteIngredients
             client-authentication-method: client_secret_basic
         provider:
           tacocloud:
             issuer-uri: http://127.0.0.1:9000
-
-logging:
-  level:
-    org.springframework.security: DEBUG
-    org.springframework.web: DEBUG
-    org:
-      springframework:
-        security:
-          web:
-            authentication: DEBUG
-          oauth2:
-            core: DEBUG
-            server:
-              authorization: DEBUG
-            client: DEBUG
