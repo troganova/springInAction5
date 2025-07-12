@@ -1,7 +1,0 @@
-$ docker run -p 27017:27017 -d mongo:latest
-или
-<dependency>
-<groupId>de.flapdoodle.embed</groupId>
-<artifactId>de.flapdoodle.embed.mongo</artifactId>
-<!-- <scope>test</scope> -->
-</dependency>

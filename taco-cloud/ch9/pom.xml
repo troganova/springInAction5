@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.5.3</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <groupId>sia</groupId>
+    <artifactId>ch9</artifactId>
+    <version>0.0.9-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <tacocloud.version>0.0.9-SNAPSHOT</tacocloud.version>
+    </properties>
+
+    <modules>
+        <module>ch9-tacocloud</module>
+        <module>ch9-tacocloud-api</module>
+        <module>ch9-tacocloud-data</module>
+        <module>ch9-tacocloud-domain</module>
+        <module>ch9-tacocloud-restclient</module>
+        <module>ch9-tacocloud-security</module>
+        <module>ch9-tacocloud-ui</module>
+        <module>ch9-tacocloud-web</module>
+        <module>ch9-tacocloud-kitchen</module>
+        <module>ch9-tacocloud-jms</module>
+        <module>ch9-tacocloud-rabbitmq</module>
+        <module>ch9-tacocloud-kafka</module>
+    </modules>
+
+</project>
