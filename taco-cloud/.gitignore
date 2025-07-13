@@ -1,0 +1,9 @@
+/.idea/
+/node-modules/
+/target/
+/dist/
+/files
+/ch10/simple-flow/target/
+/ch8/ch8tacocloud/ch8-tacocloud-ui/dist/
+/ch8/ch8tacocloud/ch8-tacocloud-ui/node/
+/ch8/ch8tacocloud/ch8-tacocloud-ui/node_modules/
