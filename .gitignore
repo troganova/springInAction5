@@ -1,4 +1,5 @@
 /.idea/
+/node/
 /node-modules/
 /target/
 /dist/
