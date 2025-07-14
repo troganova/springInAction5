@@ -38,6 +38,7 @@ public class Ch10ApiTacocloudApplication {
 	public CommandLineRunner dataLoader(
 			IngredientRepository repo,
 			UserRepository userRepo,
+			PaymentMethodRepository paymentMethodRepo,
 			PasswordEncoder encoder,
 			TacoRepository tacoRepo) {
 		return args -> {
@@ -72,9 +73,13 @@ public class Ch10ApiTacocloudApplication {
 			repo.save(salsa);
 			repo.save(sourCream);
 
-			userRepo.save(new User("habuma", encoder.encode("password"),
+			User user = new User("habuma", encoder.encode("password"),
 					"Craig Walls", "123 North Street", "Cross Roads", "TX",
-					"76227", "123-123-1234"));
+					"76227", "123-123-1234", "tanya-pvt@yandex.ru");
+
+			user = userRepo.save(user);
+
+			paymentMethodRepo.save(new PaymentMethod(user, "111", "11/25", "111"));
 
 			Taco taco1 = new Taco();
 			taco1.setName("Carnivore");

@@ -13,6 +13,7 @@ public class OrderApiController {
 
   private final OrderRepository repo;
   private final OrderMessagingService messagingService;
+  private final EmailOrderService emailOrderService;
 
 
   @GetMapping(produces="application/json")
@@ -24,6 +25,13 @@ public class OrderApiController {
   @ResponseStatus(HttpStatus.CREATED)
   public TacoOrder postOrder(@RequestBody TacoOrder order) {
     messagingService.sendOrder(order);
+    return repo.save(order);
+  }
+
+  @PostMapping(path="fromEmail", consumes="application/json")
+  @ResponseStatus(HttpStatus.CREATED)
+  public TacoOrder postOrderFromEmail(@RequestBody EmailOrder emailOrder) {
+    TacoOrder order = emailOrderService.convertEmailOrderToDomainOrder(emailOrder);
     return repo.save(order);
   }
 

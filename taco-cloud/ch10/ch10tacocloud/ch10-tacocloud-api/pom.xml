@@ -29,7 +29,7 @@
         </dependency>
         <dependency>
             <groupId>sia</groupId>
-            <artifactId>ch10-tacocloud-jms</artifactId>
+            <artifactId>ch10-tacocloud-kafka</artifactId>
             <version>${tacocloud.version}</version>
         </dependency>
 
