@@ -1,0 +1,37 @@
+spring:
+  main:
+    web-application-type: reactive
+  cassandra:
+    keyspace-name: tacocloud
+    schema-action: recreate-drop-unused
+    local-datacenter: datacenter1
+    username: tacocloud
+    password: 123
+---
+spring:
+  jms:
+    template:
+      default-destination: tacocloud.order.queue
+  artemis:
+    broker-url: tcp://localhost:61616
+    user: tacoweb
+    password: letm31n
+    mode: native
+    embedded:
+      enabled: false
+  config:
+    activate:
+      on-profile: jms
+
+---
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    template:
+      default-topic: tacocloud.orders.topic
+    producer:
+      keySerializer: org.springframework.kafka.support.serializer.JsonSerializer
+      valueSerializer: org.springframework.kafka.support.serializer.JsonSerializer
+  config:
+    activate:
+      on-profile: kafka

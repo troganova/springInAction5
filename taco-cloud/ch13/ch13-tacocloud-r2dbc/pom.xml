@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>sia</groupId>
+        <artifactId>ch13</artifactId>
+        <version>0.0.13-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>ch13-tacocloud-r2dbc</artifactId>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>ch13-r2dbc-tacocloud</module>
+        <module>ch13-r2dbc-tacocloud-api</module>
+        <module>ch13-r2dbc-tacocloud-data</module>
+        <module>ch13-r2dbc-tacocloud-domain</module>
+        <module>ch13-r2dbc-tacocloud-restclient</module>
+        <module>ch13-r2dbc-tacocloud-security</module>
+        <module>ch13-r2dbc-tacocloud-ui</module>
+        <module>ch13-r2dbc-tacocloud-web</module>
+        <module>ch13-r2dbc-tacocloud-kitchen</module>
+        <module>ch13-r2dbc-tacocloud-jms</module>
+        <module>ch13-r2dbc-tacocloud-rabbitmq</module>
+        <module>ch13-r2dbc-tacocloud-kafka</module>
+        <module>ch13-r2dbc-tacocloud-email</module>
+    </modules>
+
+</project>

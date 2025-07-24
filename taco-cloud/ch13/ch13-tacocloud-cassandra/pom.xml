@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>sia</groupId>
+        <artifactId>ch13</artifactId>
+        <version>0.0.13-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>ch13-tacocloud-cassandra</artifactId>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>ch13-cassandra-tacocloud</module>
+        <module>ch13-cassandra-tacocloud-api</module>
+        <module>ch13-cassandra-tacocloud-data</module>
+        <module>ch13-cassandra-tacocloud-domain</module>
+        <module>ch13-cassandra-tacocloud-restclient</module>
+        <module>ch13-cassandra-tacocloud-security</module>
+        <module>ch13-cassandra-tacocloud-ui</module>
+        <module>ch13-cassandra-tacocloud-web</module>
+        <module>ch13-cassandra-tacocloud-kitchen</module>
+        <module>ch13-cassandra-tacocloud-jms</module>
+        <module>ch13-cassandra-tacocloud-rabbitmq</module>
+        <module>ch13-cassandra-tacocloud-kafka</module>
+        <module>ch13-cassandra-tacocloud-email</module>
+    </modules>
+
+</project>
