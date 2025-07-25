@@ -31,6 +31,7 @@
         <module>ch11</module>
         <module>ch12</module>
         <module>ch13</module>
+        <module>ch14</module>
     </modules>
 
 </project>
