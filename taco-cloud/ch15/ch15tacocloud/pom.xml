@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>sia</groupId>
+        <artifactId>ch15</artifactId>
+        <version>0.0.15-SNAPSHOT</version>
+    </parent>
+
+    <groupId>sia</groupId>
+    <artifactId>ch15tacocloud</artifactId>
+    <packaging>pom</packaging>
+
+    <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>21</java.version>
+        <tacocloud.version>0.0.15-SNAPSHOT</tacocloud.version>
+    </properties>
+
+    <modules>
+        <module>ch15-tacocloud</module>
+        <module>ch15-tacocloud-api</module>
+        <module>ch15-tacocloud-data</module>
+        <module>ch15-tacocloud-domain</module>
+        <module>ch15-tacocloud-restclient</module>
+        <module>ch15-tacocloud-security</module>
+        <module>ch15-tacocloud-ui</module>
+        <module>ch15-tacocloud-web</module>
+        <module>ch15-tacocloud-kitchen</module>
+        <module>ch15-tacocloud-jms</module>
+        <module>ch15-tacocloud-rabbitmq</module>
+        <module>ch15-tacocloud-kafka</module>
+        <module>ch15-tacocloud-email</module>
+    </modules>
+
+</project>

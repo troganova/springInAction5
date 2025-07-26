@@ -1,0 +1,13 @@
+spring:
+  main:
+    web-application-type: none
+
+tacocloud:
+  api:
+    url: http://localhost:8080/api/orders/fromEmail
+  email:
+    host: imap.yandex.ru
+    mailbox: INBOX
+    username: tanya-pvt
+    password: wuoyunquacjdcsmz
+    poll-rate: 10000
