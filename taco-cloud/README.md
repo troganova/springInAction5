@@ -73,3 +73,10 @@ docker exec -it kafka /opt/bitnami/kafka/bin/kafka-console-consumer.sh \
 --bootstrap-server localhost:9092 \
 --topic tacocloud.orders.topic \
 --from-beginning
+
+
+------------------------------------------------
+docker ch18
+------------------------------------------------
+docker build . -t tacocloud-web
+docker run -p 8080:8080 -d tacocloud-web  
